@@ -12,7 +12,7 @@ public class playerMovement : MonoBehaviour
     public LayerMask groundLayer;
     public Transform jumppoint;
     public float jumprange = 0.1f;
-    public float jumpspeed;
+    private float jumpspeed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

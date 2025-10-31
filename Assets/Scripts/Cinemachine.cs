@@ -1,13 +1,18 @@
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class Cinemachine : MonoBehaviour
-{ 
+{
+    public CinemachineCamera MainCam;
+    public CinemachineCamera BossCam;
+    private CinemachineCamera activeCam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        MainCam.gameObject.SetActive(true);
+        BossCam.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -15,7 +20,12 @@ public class Cinemachine : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            CinemachineConfiner2D confiner = GetComponent<CinemachineConfiner2D>();
+            Debug.Log("Player entered boss area");
+            MainCam.gameObject.SetActive(false);
+            Debug.Log("MainCam deactivated");
+            BossCam.gameObject.SetActive(true);
+            Debug.Log("BossCam activated");
         }
     }
+
 }
